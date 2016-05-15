@@ -1,0 +1,27 @@
+button {
+  cursor: pointer;
+}
+p
+{
+  background-color: #b2beb5;
+  text-align: center;
+}
+
+.divBtns {
+  padding-left: 45%;
+  align-items: center;
+}
+.divAll {
+  background: red;
+  padding-left: 40%;
+  align-items: center;
+}
+.inputForm {
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  left: 40%;
+  width: 100%;
+  margin:auto;
+  align-items: center;
+}
