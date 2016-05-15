@@ -1,18 +1,18 @@
 button {
   cursor:           pointer;
-  width: 10%;
 }
 p
 {
   background-color: #b2beb5;
   text-align:       center;
 }
-
 .divBtns {
   padding-left:     45%;
-  align-items:      center;
 }
-.inputForm {
+.divAll {
+  padding-left:     45%;
+}
+.divInput {
   position:         absolute;
   height:           100%;
   top:              50%;

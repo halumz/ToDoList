@@ -1,45 +1,45 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset=utf-8>
+	<meta charset     = utf-8>
 	<title>Todo List</title>
-	<link rel="stylesheet" href="todo.css" />
+	<link rel         = "stylesheet" href          = "todo.css" />
 </head>
 <body>
 
 
-	<div class="inputForm">
-		<input id ="input" ></input>
-		<button id="btninputData" class="inputFormButtons" >Enter Tasks</button>
-		<button class="inputFormButtons">x</button>
+	<div class        = "divInput">
+		<input id        = "input" ></input>
+		<button id       = "btninputData">Enter Tasks</button>
+		<button id       = "btnX">x</button>
 	</div>
 
 
-	<div class="divTodo">
-		<div class=".divAll">
-			<button class="btnAddTasks" width ="10%">Add Tasks</button>
-			<button class="btnDeleteTasks" width ="10%" >Delete All Tasks</button>
+	<div class        = "divTodo">
+		<div class = ".divAll" width = "100%">
+			<button class   = "btnAddTasks">Add Tasks</button>
+			<button class   = "btnDeleteTasks">Delete All Tasks</button>
 		</div>
 
 
-		<script id="template" type="text/x-handlebars-template">
+		<script id       = "template" type            = "text/x-handlebars-template">
 			{{#each this}}
-			<div class="divTaskContainer" data-id="{{{id}}}">
+			<div class      = "divTaskContainer" data-id = "{{{id}}}">
 				<!-- <p><strong>{{{id}}}</strong></p> -->
 				<p >{{{task}}}</p>
-				<div class=divBtns id="buttons{{{id}}}"  width ="100%">
-					<button class="btnEdit" data-id="{{{id}}}" width ="10%">Edit</button>
-					<button class="btnDelete" data-id="{{{id}}}" width ="10%">Delete</button>
+				<div class     = "divBtns" id                 = "buttons{{{id}}}">
+					<button class = "btnEdit" data-id          = "{{{id}}}">Edit</button>
+					<button class = "btnDelete" data-id        = "{{{id}}}">Delete</button>
 				</div>
 			</div>
 			{{/each}}
 		</script>
 
 
-		<script src="libs/jquery.js"></script>
-		<script src="libs/jquery.cookie.js"></script>
-		<script src="libs/handlebars.js"></script>
-		<script type="text/javascript" src="Todo.js"></script>
+		<script src      = "libs/jquery.js"></script>
+		<script src      = "libs/jquery.cookie.js"></script>
+		<script src      = "libs/handlebars.js"></script>
+		<script type     = "text/javascript" src      = "Todo.js"></script>
 	</body>
 
 	</html>

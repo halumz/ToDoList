@@ -1,14 +1,14 @@
 function init() {
   var max                   = getMax(),
   selectedId                = 0,
-  inputForm                 = $('div.inputForm'),
+  divInput                 = $('div.divInput'),
   divTodo                   = $('div.divTodo'),
   btninputData              = $(document.getElementById('btninputData')),
   input                     = $('#input');
 
   //document.body.style.width = $(window).width();
   divTodo.append( Handlebars.compile( $('#template').html() )( createList(max)) );
-  inputForm.hide();
+  divInput.hide();
   $('div.divBtns').hide();
 
 
@@ -22,9 +22,9 @@ function init() {
     });
   })
   $('button.btnAddTasks').on('click', function() {
-    $(inputForm).fadeIn('medium');
+    divInput.fadeIn('fast');
     selectedId              = -1;
-    edit();
+    setInput();
   })
 
   $('button.btnDeleteTasks').on('click', function() {
@@ -34,22 +34,20 @@ function init() {
     location.reload();
   })
 
-
-  $('button.inputFormButtons').on('click', function() {
-    $(inputForm).fadeOut('medium', function() {
-      inputForm.hide();
-      divTodo.show();
-    });
-  })
-
   $('button.btnEdit').on('click', function() {
     selectedId              = $(this).data('id');
-    edit();
+    setInput();
   })
 
   $('button.btnDelete').on('click', function() {
     $.cookie(""+$(this).data('id'), '');
     location.reload();
+  })
+  $(document.getElementById('btnX')).on('click', function() {
+      divInput.fadeOut('fast', function() {
+      divInput.hide();
+      divTodo.show().fadeIn('fast');
+    });
   })
   btninputData.on('click', function() {
     var data                = input.val().toString();
@@ -71,9 +69,9 @@ function init() {
       location.reload();
     }
   })
-  function edit()
+  function setInput()
   {
-    inputForm.show().fadeIn();
+    divInput.show().fadeIn();
     divTodo.hide();
     if(selectedId           == -1)
     {
@@ -81,38 +79,34 @@ function init() {
       btninputData.html( 'Save Task');
     }
     else {
-      console.log( $.cookie(""+selectedId));
       input.val($.cookie(""+selectedId)).focus();
       btninputData.html( 'Edit Task');
     }
   }
 
-};
+}
 init();
 function getMax() {
-  var max                   = 0,
-    num                     = $.cookie('max');
+  var num                     = $.cookie('max');
   if(num !== undefined)
   {
-    max                     = num;
+    return num;
   }
   else {
     $.cookie('max','0');
     return 0;
   }
-  return max;
 }
 
 function createList(max) {
   var array                 = [];
   for (var i                = 1; i <= max; i++) {
-    var nowiId              = i,
-    nowTask                 = $.cookie(i+'');
-    if(nowTask.length != 0)
+    var Task                 = $.cookie(i+'');
+    if(Task.length != 0)
     {
       array.push({
-        id:                   nowiId,
-        task:                 nowTask,
+        id:                   i,
+        task:                 Task,
       });
     }
   }
