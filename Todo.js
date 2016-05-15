@@ -6,7 +6,7 @@ function init() {
   btninputData              = $(document.getElementById('btninputData')),
   input                     = $('#input');
 
-  document.body.style.width = $(window).width();
+  //document.body.style.width = $(window).width();
   divTodo.append( Handlebars.compile( $('#template').html() )( createList(max)) );
   inputForm.hide();
   $('div.divBtns').hide();
@@ -28,7 +28,7 @@ function init() {
   })
 
   $('button.btnDeleteTasks').on('click', function() {
-    for (var i              = 1; i < = max; i++) {
+    for (var i = 1; i <= max; i++) {
       $.cookie(""+i, '');
     }
     location.reload();
@@ -53,13 +53,13 @@ function init() {
   })
   btninputData.on('click', function() {
     var data                = input.val().toString();
-    if(data.length          =        = 0)
+    if(data.length          == 0)
     {
       alert('Please write something');
     }
     else
     {
-      if(selectedId         =        = -1)
+      if(selectedId         == -1)
       {
         max++;
         $.cookie("max", max);
@@ -75,7 +75,7 @@ function init() {
   {
     inputForm.show().fadeIn();
     divTodo.hide();
-    if(selectedId           =        = -1)
+    if(selectedId           == -1)
     {
       input.val('').focus();
       btninputData.html( 'Save Task');
@@ -92,7 +92,7 @@ init();
 function getMax() {
   var max                   = 0,
     num                     = $.cookie('max');
-  if(num !                  =        = undefined)
+  if(num !== undefined)
   {
     max                     = num;
   }
@@ -105,10 +105,10 @@ function getMax() {
 
 function createList(max) {
   var array                 = [];
-  for (var i                = 1; i < = max; i++) {
+  for (var i                = 1; i <= max; i++) {
     var nowiId              = i,
     nowTask                 = $.cookie(i+'');
-    if(nowTask.length !     = 0)
+    if(nowTask.length != 0)
     {
       array.push({
         id:                   nowiId,
