@@ -1,10 +1,10 @@
 function init() {
-  var max = getMax(),
-  selectedId = 0,
-  inputForm =$('div.inputForm'),
-  divTodo=$('div.divTodo'),
-  btninputData = $(document.getElementById('btninputData')),
-  input =  $('#input');
+  var max                   = getMax(),
+  selectedId                = 0,
+  inputForm                 = $('div.inputForm'),
+  divTodo                   = $('div.divTodo'),
+  btninputData              = $(document.getElementById('btninputData')),
+  input                     = $('#input');
 
   document.body.style.width = $(window).width();
   divTodo.append( Handlebars.compile( $('#template').html() )( createList(max)) );
@@ -23,12 +23,12 @@ function init() {
   })
   $('button.btnAddTasks').on('click', function() {
     $(inputForm).fadeIn('medium');
-    selectedId = -1;
+    selectedId              = -1;
     edit();
   })
 
   $('button.btnDeleteTasks').on('click', function() {
-    for (var i = 1; i <= max; i++) {
+    for (var i              = 1; i < = max; i++) {
       $.cookie(""+i, '');
     }
     location.reload();
@@ -43,7 +43,7 @@ function init() {
   })
 
   $('button.btnEdit').on('click', function() {
-    selectedId = $(this).data('id');
+    selectedId              = $(this).data('id');
     edit();
   })
 
@@ -52,14 +52,14 @@ function init() {
     location.reload();
   })
   btninputData.on('click', function() {
-    var data =input.val().toString();
-    if(data.length==0)
+    var data                = input.val().toString();
+    if(data.length          =        = 0)
     {
       alert('Please write something');
     }
     else
     {
-      if(selectedId ==-1)
+      if(selectedId         =        = -1)
       {
         max++;
         $.cookie("max", max);
@@ -75,7 +75,7 @@ function init() {
   {
     inputForm.show().fadeIn();
     divTodo.hide();
-    if(selectedId == -1)
+    if(selectedId           =        = -1)
     {
       input.val('').focus();
       btninputData.html( 'Save Task');
@@ -90,11 +90,11 @@ function init() {
 };
 init();
 function getMax() {
-  var max = 0,
-    num = $.cookie('max');
-  if(num !==undefined)
+  var max                   = 0,
+    num                     = $.cookie('max');
+  if(num !                  =        = undefined)
   {
-    max = num;
+    max                     = num;
   }
   else {
     $.cookie('max','0');
@@ -104,15 +104,15 @@ function getMax() {
 }
 
 function createList(max) {
-  var array = [];
-  for (var i = 1; i <= max; i++) {
-    var nowiId = i,
-    nowTask = $.cookie(i+'');
-    if(nowTask.length != 0)
+  var array                 = [];
+  for (var i                = 1; i < = max; i++) {
+    var nowiId              = i,
+    nowTask                 = $.cookie(i+'');
+    if(nowTask.length !     = 0)
     {
       array.push({
-        id:nowiId,
-        task: nowTask,
+        id:                   nowiId,
+        task:                 nowTask,
       });
     }
   }
