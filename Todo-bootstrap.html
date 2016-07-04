@@ -1,0 +1,77 @@
+<!doctype html>
+<html class="well">
+	<head>
+		<meta charset     = utf-8>
+		<title>Todo List</title>
+		<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="libs/bootstrap/datepicker/css/bootstrap-datepicker.min.css">
+		<script src 	= "libs/jquery.js"></script>
+	<body>
+
+
+		<!-- Modal Start-->
+	  	<div class="modal fade" id="modalAddTask" role="dialog">
+			<div class="modal-dialog">
+		  		<div class="modal-content">
+					<div class="modal-header">
+		 				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			  				<h4 class="modal-title" id="modalTittle" >Modal Header</h4>
+					</div>
+					<div class="modal-body">
+		   				<input type="text" class="form-control required"  id="inputTask" placeholder="Task Name">
+			   			
+			   			<div class="input-append date" id="dp3" data-date-format="dd/mm/yyyy">
+							<input class="span2" size="16" type="text" >
+							<span class="add-on"><i class="icon-th"></i></span>
+						</div>
+
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" id="btnMdalSuccess">Save Task</button>
+					</div>
+		  		</div>
+			</div>
+	  	</div>
+	  	<!-- modal ends-->
+
+	  	<!-- handlebars starts-->
+		<script id       = "template" type            = "text/x-handlebars-template">
+			{{#each this}}
+			<div class      = "divTaskContainer" id  = {{{id}}} data-id  = {{{id}}}>
+				<!--p class="lead"><strong>{{{id}}}</strong></p-->
+				<p class="lead">{{{task}}}</p>
+				<p class="lead">{{{time}}}</p>
+				<div class = "divBtns well" id   = "divBtns{{{id}}}">
+					<button type="button" class="btnEdit btn btn-default"	id	= "btnEdit"	data-id ={{{id}}}>Edit</button>
+					<button type="button" class="btnDelete btn btn-danger" data-id = {{{id}}}>Delete</button>
+				</div>
+			</div>
+			{{/each}}
+		</script>
+		<!-- handlebars ends-->
+		
+
+
+		
+		<div class = "row" width = "100%" >
+			<button id   = "btnAddTasks" type="button" class="btn btn-default">Add Tasks</button>
+			<button id   = "btnDeleteTasks" type="button" class="btn btn-danger">Delete All Tasks</button>
+			<button id   = "btnFullCalView" type="button" class="btn btn-default">Calendar View</button>
+		</div>
+		<div   id="divTasks" class="well"> </div>
+		
+
+
+
+		<script src		= "libs/jquery-ui.js"></script>
+		<!-- <script src 	= "libs/jquery.cookie.js"></script> -->
+		<script src 	= "libs/handlebars.js"></script>
+		<script type 	= "text/javascript" src      = "Todo.js"></script>
+
+		<script src 	="libs/bootstrap/js/bootstrap.min.js" ></script>
+		<script src 	="libs/bootstrap/datepicker/js/bootstrap-datepicker.min.js" ></script>
+		
+	</body>
+
+</html>
